@@ -22,7 +22,8 @@ let arr = [
     ['撤回起诉和无罪判决率', {
         current: 'withdrawalOfProsecutionAndAcquittalRate',
         '撤回起诉和无罪判决率（反向）': 'withdrawalOfProsecutionRate',
-        // '无罪判决率（反向）': 'acquittalRate',
+        '撤回起诉率': 'withdrawalRate',
+        '无罪判决率（反向）': 'acquittalRate',
         // '组合评价': 'evaluation'
     }],
     ['直接立案侦查', {
@@ -46,7 +47,7 @@ let arr = [
         '民事裁判案件监督率': 'civilSupervisionRate',
         '行政裁判案件监督率': 'administrativeSupervisionRate',
         // '刑事申诉再审检察建议提出率': 'criminalAppealRetrialProsecutionSuggestionRate',
-        '组合评价': 'evaluation'
+        // '组合评价': 'evaluation'
     }],
     ['裁判案件监督采纳率', {
         current: 'judicialCasesSupervisionAdoptRate',
@@ -56,8 +57,10 @@ let arr = [
         '行政抗诉改变率': 'administrativeProtestChangeRate',
         '行政再审检察建议法院采纳率': 'administrativeRetrialProsecutionSuggestionAdoptRate',
         '行政裁判案件化解行政争议率': 'administrativeDisputeResolutionRate',
+        '民事裁判案件监督改变率': 'N1',
+        '行政裁判案件监督改变率': 'N2',
         // '刑事申诉再审检察建议采纳率': 'criminalAppealRetrialProsecutionSuggestionAdoptRate',
-        '组合评价': 'evaluation'
+        // '组合评价': 'evaluation'
     }],
     ['立案监督率', {
         current: 'filingSupervisionRate',
@@ -72,7 +75,7 @@ let arr = [
         '刑事审判活动违法监督率': 'illegalTrialSupervisionRate',
         '减假暂书面监督意见提出率': 'writtenSupervisionOpinionRate',
         '刑罚执行和监管活动严重违法行为书面监督提出率': 'writtenSupervisionOpinionOfSeriousIllegalActsInPenalExecutionAndSupervisionRate',
-        '组合评价': 'evaluation'
+        // '组合评价': 'evaluation'
     }],
     ['刑事检察非裁判监督意见采纳率', {
         current: 'nonJudicialCriminalSupervisionOpinionAdoptRate',
@@ -80,7 +83,7 @@ let arr = [
         '刑事审判活动违法监督采纳率': 'illegalTrialSupervisionAdoptRate',
         '减假暂书面监督意见采纳率': 'writtenSupervisionOpinionAdoptRate',
         '刑罚执行和监管活动严重违法行为监督意见采纳率': 'seriousIllegalActsInPenalExecutionAndSupervisionAdoptRate',
-        '组合评价': 'evaluation'
+        // '组合评价': 'evaluation'
     }],
     ['民事行政检察非裁判监督意见提出率', {
         current: 'nonJudicialCivilAdministrativeSupervisionOpinionRate',
@@ -95,17 +98,19 @@ let arr = [
         current: 'nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate',
         '民事检察非裁判监督检察建议采纳率': 'illegalCivilTrialSupervisionSuggestionAdoptRate',
         '行政检察非裁判监督检察建议采纳率': 'civilExecutionSupervisionSuggestionAdoptRate',
-        // '行政审判违法监督检察建议采纳率': 'illegalAdministrativeTrialSupervisionSuggestionAdoptRate',
-        // '行政执行（含非诉执行）监督案件检察建议采纳率': 'administrativeExecutionSupervisionSuggestionAdoptRate',
+        '民事审判违法监督检察建议采纳率': 'N3',
+        '民事执行监督检察建议采纳率': 'N4',
+        '行政审判违法监督检察建议采纳率': 'illegalAdministrativeTrialSupervisionSuggestionAdoptRate',
+        '行政执行（含非诉执行）监督案件检察建议采纳率': 'administrativeExecutionSupervisionSuggestionAdoptRate',
         // '行政违法行为监督案件检察建议采纳率': 'illegalAdministrativeActSupervisionSuggestionAdoptRate',
-        '组合评价': 'evaluation'
+        // '组合评价': 'evaluation'
     }],
     ['综合业务工作', {
         current: 'socialGovernanceSupervisionSuggestionRateAndAdoptRate',
         '社会治理检察建议提出率': 'socialGovernanceSupervisionSuggestionRate',
-        '社会治理及其他检察建议采纳率': 'socialGovernanceSupervisionSuggestionAdoptRate',
-        '案均邀请人民监督员监督率': 'averageNumberOfPeopleSupervisorsPerCase',
-        '案均检察听证率': 'caseProsecutionHearing',
+        '社会治理检察建议采纳率': 'socialGovernanceSupervisionSuggestionAdoptRate',
+        // '案均邀请人民监督员监督率': 'averageNumberOfPeopleSupervisorsPerCase',
+        // '案均检察听证率': 'caseProsecutionHearing',
         // '组合评价': 'evaluation'
     }],
     ['诉前整改率', {
@@ -118,20 +123,20 @@ let arr = [
         current: 'missedArrestAndProsecutionCorrectionRate',
         '纠正漏捕、漏诉率': 'missedArrestAndProsecutionCorrectionRate',
         '纠正漏捕、漏诉判处有期徒刑以上刑罚率': 'missedArrestAndProsecutionCorrectionImprisonmentRate',
-        '组合评价': 'evaluation'
+        // '组合评价': 'evaluation'
     }],
     ['追赃挽损工作', {
         current: 'recoverAndCompensate',
         '开展追赃挽损工作率': 'recoverAndCompensateWorkingRate',
         '案均追赃挽损金额': 'averageRecoverAmount',
         '追赃挽损率': 'recoverAndCompensateRate',
-        '组合评价': 'evaluation'
+        // '组合评价': 'evaluation'
     }],
     ['认罪认罚工作', {
         current: 'confessionAndPunishment',
         '认罪认罚适用率': 'confessionAndPunishmentRate',
         '确定刑量刑建议采纳占比率': 'punishmentSuggestionAdoptRate',
-        '组合评价': 'evaluation'
+        // '组合评价': 'evaluation'
     }],
     ['诉前羁押率', 'preTrialDetentionRate'],
     ['洗钱罪与上游犯罪比值', 'moneyLaunderingAndUpstreamCrimeRatio'],
@@ -139,7 +144,7 @@ let arr = [
         current: 'specialMetrics',
         '附条件不起诉率': 'conditionalNonProsecutionRate',
         '综合履职适用率': 'comprehensivePerformanceRate',
-        '组合评价': 'evaluation'
+        // '组合评价': 'evaluation'
     }],
     ['司法救助率', 'judicialAidRate'],
     ['案例发布数', 'caseReleaseCount'],
