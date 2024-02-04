@@ -1,11 +1,7 @@
 <template>
   <el-container>
     <el-main>
-      <el-radio-group
-        v-model="rankFigureField"
-        class="ml-4"
-        @change="rankFieldChange"
-      >
+      <el-radio-group v-model="rankFigureField" class="ml-4" @change="rankFieldChange">
         <el-radio :label="1">分院（含辖区）</el-radio>
 
         <el-radio :label="2">分院</el-radio>
@@ -23,11 +19,7 @@
 
       <p>三大结构比</p>
 
-      <el-radio-group
-        v-model="structureDistributionField"
-        class="ml-4"
-        @change="structureDistributionFieldChange"
-      >
+      <el-radio-group v-model="structureDistributionField" class="ml-4" @change="structureDistributionFieldChange">
         <el-radio :label="1">四大检察结构比</el-radio>
 
         <el-radio :label="2">业务来源结构比</el-radio>
@@ -38,156 +30,102 @@
       <div style="display: flex; flex-direction: row">
         <div id="structure-distribution-figure" />
 
-        <el-space
-          direction="vertical"
-          alignment="flex-start"
-          v-if="structureDistributionField === 1"
-        >
-          <el-text
-            >刑事检察受理数<el-text type="danger">（反向）</el-text></el-text
-          >
+        <el-space direction="vertical" alignment="flex-start" v-if="structureDistributionField === 1">
+          <el-text>刑事检察受理数<el-text type="danger">（反向）</el-text></el-text>
 
-          <el-text
-            ><el-text type="primary">{{
-              currentObject.fourMainDistribution.criminal.count.value
-            }}</el-text
-            >件，占比<el-text type="primary"
-              >{{
-                currentObject.fourMainDistribution.criminal.percentage.value
-              }}%</el-text
-            >
+          <el-text><el-text type="primary">{{
+            currentObject.fourMainDistribution.criminal.count.value
+          }}</el-text>件，占比<el-text type="primary">{{
+  currentObject.fourMainDistribution.criminal.percentage.value
+}}%</el-text>
           </el-text>
 
           <el-text>民事检察受理数</el-text>
 
-          <el-text
-            ><el-text type="primary">{{
-              currentObject.fourMainDistribution.civil.count.value
-            }}</el-text
-            >件，占比<el-text type="primary"
-              >{{
-                currentObject.fourMainDistribution.civil.percentage.value
-              }}%</el-text
-            >
+          <el-text><el-text type="primary">{{
+            currentObject.fourMainDistribution.civil.count.value
+          }}</el-text>件，占比<el-text type="primary">{{
+  currentObject.fourMainDistribution.civil.percentage.value
+}}%</el-text>
           </el-text>
 
           <el-text>行政检察受理数</el-text>
 
-          <el-text
-            ><el-text type="primary">{{
-              currentObject.fourMainDistribution.administrative.count.value
-            }}</el-text
-            >件，占比<el-text type="primary"
-              >{{
-                currentObject.fourMainDistribution.administrative.percentage
-                  .value
-              }}%</el-text
-            >
+          <el-text><el-text type="primary">{{
+            currentObject.fourMainDistribution.administrative.count.value
+          }}</el-text>件，占比<el-text type="primary">{{
+  currentObject.fourMainDistribution.administrative.percentage
+    .value
+}}%</el-text>
           </el-text>
 
           <el-text>公益诉讼受理数</el-text>
 
-          <el-text
-            ><el-text type="primary">{{
-              currentObject.fourMainDistribution.publicInterestLitigation.count
-                .value
-            }}</el-text
-            >件，占比<el-text type="primary"
-              >{{
-                currentObject.fourMainDistribution.publicInterestLitigation
-                  .percentage.value
-              }}%</el-text
-            >
+          <el-text><el-text type="primary">{{
+            currentObject.fourMainDistribution.publicInterestLitigation.count
+              .value
+          }}</el-text>件，占比<el-text type="primary">{{
+  currentObject.fourMainDistribution.publicInterestLitigation
+    .percentage.value
+}}%</el-text>
           </el-text>
         </el-space>
 
-        <el-space
-          direction="vertical"
-          alignment="flex-start"
-          v-else-if="structureDistributionField === 2"
-        >
-          <el-text
-            >依移送受理数<el-text type="danger">（反向）</el-text></el-text
-          >
+        <el-space direction="vertical" alignment="flex-start" v-else-if="structureDistributionField === 2">
+          <el-text>依移送受理数<el-text type="danger">（反向）</el-text></el-text>
 
-          <el-text
-            ><el-text type="primary">{{
-              currentObject.businessSourceStructure.acceptByTransfer.count.value
-            }}</el-text
-            >件，占比<el-text type="primary"
-              >{{
-                currentObject.businessSourceStructure.acceptByTransfer
-                  .percentage.value
-              }}%</el-text
-            >
+          <el-text><el-text type="primary">{{
+            currentObject.businessSourceStructure.acceptByTransfer.count.value
+          }}</el-text>件，占比<el-text type="primary">{{
+  currentObject.businessSourceStructure.acceptByTransfer
+    .percentage.value
+}}%</el-text>
           </el-text>
 
           <el-text>依申请监督受理数</el-text>
 
-          <el-text
-            ><el-text type="primary">{{
-              currentObject.businessSourceStructure.superviseByApplication.count
-                .value
-            }}</el-text
-            >件，占比<el-text type="primary"
-              >{{
-                currentObject.businessSourceStructure.superviseByApplication
-                  .percentage.value
-              }}%</el-text
-            >
+          <el-text><el-text type="primary">{{
+            currentObject.businessSourceStructure.superviseByApplication.count
+              .value
+          }}</el-text>件，占比<el-text type="primary">{{
+  currentObject.businessSourceStructure.superviseByApplication
+    .percentage.value
+}}%</el-text>
           </el-text>
 
           <el-text>依职权主动监督受理数</el-text>
 
-          <el-text
-            ><el-text type="primary">{{
-              currentObject.businessSourceStructure.superviseByPower.count.value
-            }}</el-text
-            >件，占比<el-text type="primary"
-              >{{
-                currentObject.businessSourceStructure.superviseByPower
-                  .percentage.value
-              }}%</el-text
-            >
+          <el-text><el-text type="primary">{{
+            currentObject.businessSourceStructure.superviseByPower.count.value
+          }}</el-text>件，占比<el-text type="primary">{{
+  currentObject.businessSourceStructure.superviseByPower
+    .percentage.value
+}}%</el-text>
           </el-text>
         </el-space>
 
-        <el-space
-          direction="vertical"
-          alignment="flex-start"
-          v-else-if="structureDistributionField === 3"
-        >
-          <el-text
-            >司法办案数占比<el-text type="danger">（反向）</el-text></el-text
-          >
+        <el-space direction="vertical" alignment="flex-start" v-else-if="structureDistributionField === 3">
+          <el-text>司法办案数占比<el-text type="danger">（反向）</el-text></el-text>
 
-          <el-text type="primary"
-            >{{
-              currentObject.judicialAndSupervisionCaseHandlingStructure
-                .judicialCaseHandlingRate.value
-            }}%</el-text
-          >
+          <el-text type="primary">{{
+            currentObject.judicialAndSupervisionCaseHandlingStructure
+              .judicialCaseHandlingRate.value
+          }}%</el-text>
 
           <el-text>监督办案数占比</el-text>
 
-          <el-text type="primary"
-            >{{
-              currentObject.judicialAndSupervisionCaseHandlingStructure
-                .supervisionCaseHandlingRate.value
-            }}%</el-text
-          >
+          <el-text type="primary">{{
+            currentObject.judicialAndSupervisionCaseHandlingStructure
+              .supervisionCaseHandlingRate.value
+          }}%</el-text>
         </el-space>
       </div>
 
       <el-card class="box-card" style="margin: 3px">
         <div>
-          <el-row
-            v-for="item in sortedArrayWithStructureDistribution(
-              structureDistributionField
-            )"
-            :key="item.name"
-            style="height: 40px"
-          >
+          <el-row v-for="item in sortedArrayWithStructureDistribution(
+            structureDistributionField
+          )" :key="item.name" style="height: 40px">
             <el-col :span="6" class="aligned-el-col">
               <el-text truncated>{{ item.name }} </el-text>
             </el-col>
@@ -204,41 +142,25 @@
       <p>数字检察贡献率</p>
 
       <el-space direction="vertical" alignment="flex-start">
-        <el-text
-          >大数据监督发现线索数占线索受理数的比<el-text type="primary"
-            >{{
-              currentObject.qualityAndEfficiency.digitalContributionRate
-                .bigDataClueAcceptedRate.value
-            }}%</el-text
-          ></el-text
-        >
+        <el-text>大数据监督发现线索数占线索受理数的比<el-text type="primary">{{
+          currentObject.qualityAndEfficiency.digitalContributionRate
+            .bigDataClueAcceptedRate.value
+        }}%</el-text></el-text>
 
-        <el-text
-          >大数据发现线索成案数占线索成案数的比<el-text type="primary"
-            >{{
-              currentObject.qualityAndEfficiency.digitalContributionRate
-                .bigDataClueMakeUpCaseRate.value
-            }}%</el-text
-          ></el-text
-        >
+        <el-text>大数据发现线索成案数占线索成案数的比<el-text type="primary">{{
+          currentObject.qualityAndEfficiency.digitalContributionRate
+            .bigDataClueMakeUpCaseRate.value
+        }}%</el-text></el-text>
 
-        <el-text
-          >大数据监督案件占比<el-text type="primary"
-            >{{
-              currentObject.qualityAndEfficiency.digitalContributionRate
-                .bigDataClueCaseRate.value
-            }}%</el-text
-          ></el-text
-        >
+        <el-text>大数据监督案件占比<el-text type="primary">{{
+          currentObject.qualityAndEfficiency.digitalContributionRate
+            .bigDataClueCaseRate.value
+        }}%</el-text></el-text>
       </el-space>
 
       <el-card class="box-card" style="margin: 3px">
         <div>
-          <el-row
-            v-for="item in sortedArrayWithDigitalCase()"
-            :key="item.name"
-            style="height: 40px"
-          >
+          <el-row v-for="item in sortedArrayWithDigitalCase()" :key="item.name" style="height: 40px">
             <el-col :span="6" class="aligned-el-col">
               <el-text truncated>{{ item.name }}</el-text>
             </el-col>
@@ -256,24 +178,14 @@
 
       <div>
         <el-space direction="vertical" alignment="flex-start">
-          <el-text
-            >四大检察案件受理<el-text type="primary">{{
-              currentObject.caseAccepted.fourMainCaseCount.value
-            }}</el-text
-            >件</el-text
-          >
+          <el-text>四大检察案件受理<el-text type="primary">{{
+            currentObject.caseAccepted.fourMainCaseCount.value
+          }}</el-text>件</el-text>
         </el-space>
 
-        <el-row
-          v-for="item in sortedArrayWithAcceptCount()"
-          :key="item.name"
-          style="height: 40px"
-        >
+        <el-row v-for="item in sortedArrayWithAcceptCount()" :key="item.name" style="height: 40px">
           <el-col :span="10">
-            <el-text truncated
-              >{{ item.name }}<el-text type="primary">{{ item.count }}</el-text
-              >件</el-text
-            >
+            <el-text truncated>{{ item.name }}<el-text type="primary">{{ item.count }}</el-text>件</el-text>
           </el-col>
 
           <el-col :span="14">
@@ -287,11 +199,7 @@
       <p>案件办理</p>
 
       <div style="display: flex; flex-direction: row">
-        <el-card
-          class="box-card"
-          style="margin: 3px; width: 33%"
-          @click="caseHandledFieldChange(1)"
-        >
+        <el-card class="box-card" style="margin: 3px; width: 33%" @click="caseHandledFieldChange(1)">
           <template #header>
             <div class="card-header">
               <el-text truncated>审结数</el-text>
@@ -305,11 +213,7 @@
           </div>
         </el-card>
 
-        <el-card
-          class="box-card"
-          style="margin: 3px; width: 33%"
-          @click="caseHandledFieldChange(2)"
-        >
+        <el-card class="box-card" style="margin: 3px; width: 33%" @click="caseHandledFieldChange(2)">
           <template #header>
             <div class="card-header">
               <el-text truncated>审结率</el-text>
@@ -323,16 +227,10 @@
           </div>
         </el-card>
 
-        <el-card
-          class="box-card"
-          style="margin: 3px; width: 33%"
-          @click="caseHandledFieldChange(3)"
-        >
+        <el-card class="box-card" style="margin: 3px; width: 33%" @click="caseHandledFieldChange(3)">
           <template #header>
             <div class="card-header">
-              <el-text truncated
-                >未结数<el-text type="danger">（反向）</el-text></el-text
-              >
+              <el-text truncated>未结数<el-text type="danger">（反向）</el-text></el-text>
             </div>
           </template>
 
@@ -344,23 +242,12 @@
         </el-card>
       </div>
 
-      <el-card
-        class="box-card"
-        style="margin: 3px"
-        v-if="caseHandledField === 1"
-      >
+      <el-card class="box-card" style="margin: 3px" v-if="caseHandledField === 1">
         <div>
-          <el-row
-            v-for="item in sortedArrayWithFinishedCount()"
-            :key="item.name"
-            style="height: 40px"
-          >
+          <el-row v-for="item in sortedArrayWithFinishedCount()" :key="item.name" style="height: 40px">
             <el-col :span="10">
-              <el-text truncated
-                >{{ item.name
-                }}<el-text type="primary">{{ item.count }}</el-text
-                >件</el-text
-              >
+              <el-text truncated>{{ item.name
+              }}<el-text type="primary">{{ item.count }}</el-text>件</el-text>
             </el-col>
 
             <el-col :span="14">
@@ -370,17 +257,9 @@
         </div>
       </el-card>
 
-      <el-card
-        class="box-card"
-        style="margin: 3px"
-        v-if="caseHandledField === 2"
-      >
+      <el-card class="box-card" style="margin: 3px" v-if="caseHandledField === 2">
         <div>
-          <el-row
-            v-for="item in sortedArrayWithFinishedRate()"
-            :key="item.name"
-            style="height: 40px"
-          >
+          <el-row v-for="item in sortedArrayWithFinishedRate()" :key="item.name" style="height: 40px">
             <el-col :span="6">
               <el-text truncated>{{ item.name }}</el-text>
             </el-col>
@@ -392,32 +271,19 @@
         </div>
       </el-card>
 
-      <el-card
-        class="box-card"
-        style="margin: 3px"
-        v-else-if="caseHandledField === 3"
-      >
+      <el-card class="box-card" style="margin: 3px" v-else-if="caseHandledField === 3">
         <div>
-          <el-row
-            v-for="item in sortedArrayWithUnfinishedCount()"
-            :key="item.name"
-            style="height: 40px"
-          >
+          <el-row v-for="item in sortedArrayWithUnfinishedCount()" :key="item.name" style="height: 40px">
             <el-col :span="6">
               <el-text truncated>{{ item.name }}</el-text>
             </el-col>
 
             <el-col :span="8">
-              <el-text truncated
-                ><el-text type="primary">{{ item.count }}</el-text
-                >件</el-text
-              >
+              <el-text truncated><el-text type="primary">{{ item.count }}</el-text>件</el-text>
             </el-col>
 
             <el-col :span="10">
-              <el-text type="primary"
-                >{{ item.score }}<el-text>分</el-text></el-text
-              >
+              <el-text type="primary">{{ item.score }}<el-text>分</el-text></el-text>
             </el-col>
           </el-row>
         </div>
@@ -427,48 +293,31 @@
 
       <p>线索情况</p>
 
-      <el-select
-        v-model="clueParentKey"
-        class="m-2"
-        style="margin: 5px"
-        @change="clueParentChange"
-      >
+      <el-select v-model="clueParentKey" class="m-2" style="margin: 5px" @change="clueParentChange">
         <el-option v-for="item in clueParentKeys" :key="item" :value="item" />
       </el-select>
 
-      <el-select
-        v-model="clueSubKey"
-        class="m-2"
-        v-if="clueSubKeys.length !== 0"
-        style="margin: 5px"
-        @change="clueSubKeyChange"
-      >
+      <el-select v-model="clueSubKey" class="m-2" v-if="clueSubKeys.length !== 0" style="margin: 5px"
+        @change="clueSubKeyChange">
         <el-option v-for="item in clueSubKeys" :key="item" :value="item" />
       </el-select>
 
       <p style="margin: 10px">
         {{ currentObject.name }}数据：<el-text type="primary">{{
           clueCity
-        }}</el-text
-        >{{ clueAppendix }}
+        }}</el-text>{{ clueAppendix }}
       </p>
 
       <el-card class="box-card" style="margin: 3px">
         <div>
-          <el-row
-            v-for="item in clueFirstThree"
-            :key="item.name"
-            style="height: 40px"
-          >
+          <el-row v-for="item in clueFirstThree" :key="item.name" style="height: 40px">
             <el-col :span="12" class="aligned-el-col">
               <el-text truncated>{{ item.name }}</el-text>
             </el-col>
 
             <el-col :span="12" class="aligned-el-col">
-              <el-text type="primary"
-                >{{ item.actValue
-                }}<el-text>{{ clueAppendix }}</el-text></el-text
-              >
+              <el-text type="primary">{{ item.actValue
+              }}<el-text>{{ clueAppendix }}</el-text></el-text>
             </el-col>
           </el-row>
         </div>
@@ -478,47 +327,30 @@
 
       <p>案件质效</p>
 
-      <el-select
-        v-model="qeParentKey"
-        class="m-2"
-        style="margin: 5px"
-        @change="qeParentChange"
-      >
+      <el-select v-model="qeParentKey" class="m-2" style="margin: 5px" @change="qeParentChange">
         <el-option v-for="item in qeParentKeys" :key="item" :value="item" />
       </el-select>
 
-      <el-select
-        v-model="qeSubKey"
-        class="m-2"
-        v-if="qeSubKeys.length !== 0"
-        style="margin: 5px"
-        @change="qeSubKeyChange"
-      >
+      <el-select v-model="qeSubKey" class="m-2" v-if="qeSubKeys.length !== 0" style="margin: 5px"
+        @change="qeSubKeyChange">
         <el-option v-for="item in qeSubKeys" :key="item" :value="item" />
       </el-select>
 
       <p style="margin: 10px">
         {{ currentObject.name }}数据：<el-text type="primary">{{
           qeCity
-        }}</el-text
-        >{{ qeAppendix }}
+        }}</el-text>{{ qeAppendix }}
       </p>
 
       <el-card class="box-card" style="margin: 3px">
         <div>
-          <el-row
-            v-for="item in qeFirstThree"
-            :key="item.name"
-            style="height: 40px"
-          >
+          <el-row v-for="item in qeFirstThree" :key="item.name" style="height: 40px">
             <el-col :span="12" class="aligned-el-col">
               <el-text truncated>{{ item.name }}</el-text>
             </el-col>
 
             <el-col :span="12" class="aligned-el-col">
-              <el-text type="primary"
-                >{{ item.actValue }}<el-text>{{ qeAppendix }}</el-text></el-text
-              >
+              <el-text type="primary">{{ item.actValue }}<el-text>{{ qeAppendix }}</el-text></el-text>
             </el-col>
           </el-row>
         </div>
@@ -526,9 +358,7 @@
     </el-main>
 
     <el-footer>
-      <el-text type="primary" truncated
-        >{{ getYear() }}©️北京市人民检察院</el-text
-      >
+      <el-text type="primary" truncated>{{ getYear() }}©️北京市人民检察院</el-text>
     </el-footer>
   </el-container>
 </template>
@@ -1328,10 +1158,10 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.caseDistribution.proportionOfCriminalCases =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 11:
             obj[
@@ -1345,19 +1175,19 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.caseDistribution.proportionOfAdministrativeCases =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 13:
             obj[
               index
             ].qualityAndEfficiency.caseDistribution.proportionOfPublicInterestCases =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 14:
             obj[index].qualityAndEfficiency.caseDistribution.evaluation = {
@@ -1369,199 +1199,199 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.noArrestNoAppealReconsiderationReviewChangeRate.noArrestReconsiderationReviewChangeRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 16:
             obj[
               index
             ].qualityAndEfficiency.noArrestNoAppealReconsiderationReviewChangeRate.noAppealReconsiderationReviewChangeRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 17:
             obj[
               index
             ].qualityAndEfficiency.noArrestNoAppealReconsiderationReviewChangeRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 18:
             obj[
               index
             ].qualityAndEfficiency.noProsecutionAfterArrestAndExemptionFromCriminalPunishmentRate.noProsecutionAfterArrestRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 19:
             obj[
               index
             ].qualityAndEfficiency.noProsecutionAfterArrestAndExemptionFromCriminalPunishmentRate.exemptionFromCriminalPunishmentRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 20:
             obj[
               index
             ].qualityAndEfficiency.noProsecutionAfterArrestAndExemptionFromCriminalPunishmentRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 21:
             obj[
               index
             ].qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.withdrawalOfProsecutionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 22:
             obj[
               index
             ].qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.acquittalRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 23:
             obj[
               index
             ].qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 24:
             obj[
               index
             ].qualityAndEfficiency.directFilingAndInvestigationCount.directFilingAndInvestigationCaseCount =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 25:
             obj[
               index
             ].qualityAndEfficiency.directFilingAndInvestigationCount.directFilingAndInvestigationPeopleCount =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 26:
             obj[
               index
             ].qualityAndEfficiency.directFilingAndInvestigationCount.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 27:
             obj[
               index
             ].qualityAndEfficiency.superiorSupportOfJudicialCasesRate.criminalProtestAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 28:
             obj[
               index
             ].qualityAndEfficiency.superiorSupportOfJudicialCasesRate.civilProtestAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 29:
             obj[
               index
             ].qualityAndEfficiency.superiorSupportOfJudicialCasesRate.administrativeProtestAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 30:
             obj[
               index
             ].qualityAndEfficiency.superiorSupportOfJudicialCasesRate.criminalAppealCorrectionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 31:
             obj[
               index
             ].qualityAndEfficiency.superiorSupportOfJudicialCasesRate.stateCompensationChangeRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 32:
             obj[
               index
             ].qualityAndEfficiency.superiorSupportOfJudicialCasesRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 33:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionRate.criminalProtestRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 34:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionRate.civilSupervisionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 35:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionRate.administrativeSupervisionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 36:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionRate.criminalAppealRetrialProsecutionSuggestionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 37:
             obj[
@@ -1575,100 +1405,100 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.criminalProtestAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 39:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.civilProtestChangeRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 40:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.civilRetrialProsecutionSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 41:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.administrativeProtestChangeRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 42:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.administrativeRetrialProsecutionSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 43:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.administrativeDisputeResolutionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 44:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.criminalAppealRetrialProsecutionSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 45:
             obj[
               index
             ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 46:
             obj[
               index
             ].qualityAndEfficiency.filingSupervisionRate.supervisionFilingRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 47:
             obj[
               index
             ].qualityAndEfficiency.filingSupervisionRate.supervisionWithdrawalRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 48:
             obj[
               index
             ].qualityAndEfficiency.filingSupervisionRate.supervisionFilingImprisonmentRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 49:
             obj[index].qualityAndEfficiency.filingSupervisionRate.evaluation = {
@@ -1680,289 +1510,289 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionRate.illegalInvestigationSupervisionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 51:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionRate.illegalTrialSupervisionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 52:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionRate.writtenSupervisionOpinionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 53:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionRate.writtenSupervisionOpinionOfSeriousIllegalActsInPenalExecutionAndSupervisionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 54:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 55:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionAdoptRate.writtenCorrectionOfIllegalInvestigationAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 56:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionAdoptRate.illegalTrialSupervisionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 57:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionAdoptRate.writtenSupervisionOpinionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 58:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionAdoptRate.seriousIllegalActsInPenalExecutionAndSupervisionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 59:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCriminalSupervisionOpinionAdoptRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 60:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionRate.illegalCivilTrialSupervisionSuggestionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 61:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionRate.civilExecutionSupervisionSuggestionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 62:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionRate.illegalAdministrativeTrialSupervisionSuggestionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 63:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionRate.administrativeExecutionSupervisionSuggestionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 64:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionRate.illegalAdministrativeActSupervisionSuggestionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 65:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 66:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.illegalCivilTrialSupervisionSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 67:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.civilExecutionSupervisionSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 68:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.illegalAdministrativeTrialSupervisionSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 69:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.administrativeExecutionSupervisionSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 70:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.illegalAdministrativeActSupervisionSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 71:
             obj[
               index
             ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 72:
             obj[
               index
             ].qualityAndEfficiency.socialGovernanceSupervisionSuggestionRateAndAdoptRate.socialGovernanceSupervisionSuggestionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 73:
             obj[
               index
             ].qualityAndEfficiency.socialGovernanceSupervisionSuggestionRateAndAdoptRate.socialGovernanceSupervisionSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 74:
             obj[
               index
             ].qualityAndEfficiency.socialGovernanceSupervisionSuggestionRateAndAdoptRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 75:
             obj[
               index
             ].qualityAndEfficiency.administrativePublicInterestLitigationPreTrialProcedureRate.preTrialSuggestionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 76:
             obj[
               index
             ].qualityAndEfficiency.administrativePublicInterestLitigationPreTrialProcedureRate.preTrialSuggestionRectificationRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 77:
             obj[
               index
             ].qualityAndEfficiency.administrativePublicInterestLitigationPreTrialProcedureRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 78:
             obj[
               index
             ].qualityAndEfficiency.missedArrestAndProsecutionCorrectionRate.missedArrestAndProsecutionCorrectionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 79:
             obj[
               index
             ].qualityAndEfficiency.missedArrestAndProsecutionCorrectionRate.missedArrestAndProsecutionCorrectionImprisonmentRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 80:
             obj[
               index
             ].qualityAndEfficiency.missedArrestAndProsecutionCorrectionRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 81:
             obj[
               index
             ].qualityAndEfficiency.recoverAndCompensate.recoverAndCompensateWorkingRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 82:
             obj[
@@ -1976,10 +1806,10 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.recoverAndCompensate.recoverAndCompensateRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 84:
             obj[index].qualityAndEfficiency.recoverAndCompensate.evaluation = {
@@ -1991,26 +1821,26 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.confessionAndPunishment.confessionAndPunishmentRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 86:
             obj[
               index
             ].qualityAndEfficiency.confessionAndPunishment.punishmentSuggestionAdoptRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 87:
             obj[index].qualityAndEfficiency.confessionAndPunishment.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 88:
             obj[index].qualityAndEfficiency.preTrialDetentionRate = {
@@ -2030,19 +1860,19 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.specialMetrics.conditionalNonProsecutionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 91:
             obj[
               index
             ].qualityAndEfficiency.specialMetrics.comprehensivePerformanceRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 92:
             obj[index].qualityAndEfficiency.specialMetrics.evaluation = {
@@ -2060,35 +1890,35 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.digitalContributionRate.bigDataClueAcceptedRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 95:
             obj[
               index
             ].qualityAndEfficiency.digitalContributionRate.bigDataClueMakeUpCaseRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 96:
             obj[
               index
             ].qualityAndEfficiency.digitalContributionRate.bigDataClueCaseRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 97:
             obj[index].qualityAndEfficiency.digitalContributionRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 98:
             obj[index].qualityAndEfficiency.caseReleaseCount = {
@@ -2100,19 +1930,19 @@ export default {
             obj[
               index
             ].qualityAndEfficiency.businessInformationErrorRate.caseInformationErrorRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 100:
             obj[
               index
             ].qualityAndEfficiency.businessInformationErrorRate.clueInformationErrorRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 101:
             obj[
@@ -2176,19 +2006,19 @@ export default {
             obj[
               index
             ].judicialAndSupervisionCaseHandlingStructure.judicialCaseHandlingRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 111:
             obj[
               index
             ].judicialAndSupervisionCaseHandlingStructure.supervisionCaseHandlingRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 112:
             obj[index].businessSourceStructure.superviseByPower.count = {
@@ -2262,10 +2092,10 @@ export default {
             break;
           case 123:
             obj[index].clueBidirectionalTransfer.clueAccept.fourMainPercentage =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 124:
             obj[index].clueBidirectionalTransfer.internalTransfer.count = {
@@ -2317,37 +2147,37 @@ export default {
             obj[
               index
             ].clueBidirectionalTransfer.publicInterestLitigationCaseRate.civilProsecutionRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 132:
             obj[
               index
             ].clueBidirectionalTransfer.publicInterestLitigationCaseRate.administrativeCaseFilingRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 133:
             obj[
               index
             ].clueBidirectionalTransfer.publicInterestLitigationCaseRate.administrativeCaseRate =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 134:
             obj[
               index
             ].clueBidirectionalTransfer.publicInterestLitigationCaseRate.evaluation =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 135:
             obj[index].perCapitaCaseHandling.actualPerCapitaCaseHandling = {
@@ -2375,29 +2205,29 @@ export default {
             obj[
               index
             ].perCapitaCaseHandling.perCapitaCaseHandlingOfProsecutorsYearOnYear =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           // 20230526新增末尾两列
           case 139:
             obj[
               index
             ].qualityAndEfficiency.socialGovernanceSupervisionSuggestionRateAndAdoptRate.averageNumberOfPeopleSupervisorsPerCase =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           case 140:
             obj[
               index
             ].qualityAndEfficiency.socialGovernanceSupervisionSuggestionRateAndAdoptRate.caseProsecutionHearing =
-              {
-                value: formatNumber(valueCell.v),
-                score: formatNumber(scoreCell.v),
-              };
+            {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
             break;
           // 20230910末尾新增4列
           case 141:
@@ -2552,10 +2382,6 @@ export default {
               {
                 value: 3,
                 color: "#FFD74D",
-              },
-              {
-                value: 4,
-                color: "#FF933C",
               },
             ],
           },
