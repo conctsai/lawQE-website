@@ -649,7 +649,7 @@ export default {
       }
     },
     loadWholeCityData() {
-      for (let col = 3; col <= utils.decode_col("EO"); col++) {
+      for (let col = 3; col <= utils.decode_col("EQ"); col++) {
         const cellIndex = utils.encode_cell({ c: col, r: 5 });
         const cell = this.sheet[cellIndex];
 
@@ -737,15 +737,15 @@ export default {
               formatNumber(cell.v);
             break;
           case 21:
-            this.wholeCity.qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.withdrawalOfProsecutionRate.value =
+            this.wholeCity.qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.withdrawalOfProsecutionRateandacquittalrate.value =
               formatNumber(cell.v);
             break;
           case 22:
-            this.wholeCity.qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.acquittalRate.value =
+            this.wholeCity.qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.withdrawalOfProsecutionRate.value =
               formatNumber(cell.v);
             break;
           case 23:
-            this.wholeCity.qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.evaluation.value =
+            this.wholeCity.qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.AcquittalRate.value =
               formatNumber(cell.v);
             break;
           case 24:
@@ -829,11 +829,11 @@ export default {
               formatNumber(cell.v);
             break;
           case 44:
-            this.wholeCity.qualityAndEfficiency.judicialCasesSupervisionAdoptRate.criminalAppealRetrialProsecutionSuggestionAdoptRate.value =
+            this.wholeCity.qualityAndEfficiency.judicialCasesSupervisionAdoptRate.civilDisputesupervisorAdoptRate.value =
               formatNumber(cell.v);
             break;
           case 45:
-            this.wholeCity.qualityAndEfficiency.judicialCasesSupervisionAdoptRate.evaluation.value =
+            this.wholeCity.qualityAndEfficiency.judicialCasesSupervisionAdoptRate.administrativesupervisorAdoptRate.value =
               formatNumber(cell.v);
             break;
           case 46:
@@ -849,7 +849,7 @@ export default {
               formatNumber(cell.v);
             break;
           case 49:
-            this.wholeCity.qualityAndEfficiency.filingSupervisionRate.evaluation.value =
+            this.wholeCity.qualityAndEfficiency.filingSupervisionRate.FillingsupervisionRate.value =
               formatNumber(cell.v);
             break;
           case 50:
@@ -937,7 +937,7 @@ export default {
               formatNumber(cell.v);
             break;
           case 71:
-            this.wholeCity.qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.evaluation.value =
+            this.wholeCity.qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.illegalExecutionSupervisionSuggestionAdoptRate.value =
               formatNumber(cell.v);
             break;
           case 72:
@@ -1234,6 +1234,15 @@ export default {
             this.wholeCity.qualityAndEfficiency.companyComplianceCaseRatio.value =
               formatNumber(cell.v);
             break;
+            //新增的两个case
+          case 145:
+            this.wholeCity.qualityAndEfficiency.specialMetrics.comprehensivePerformanceRateknowledge.value =
+              formatNumber(cell.v);
+            break;
+          case 146:
+            this.wholeCity.qualityAndEfficiency.specialMetrics.comprehensivePerformanceRatenot.value =
+              formatNumber(cell.v);
+            break;
         }
       }
     },
@@ -1267,7 +1276,7 @@ export default {
       obj[index].rank = formatNumber(rankCell.v);
       obj[index].totalScore = formatNumber(totalScoreCell.v);
 
-      for (let col = 3; col <= utils.decode_col("EO"); col++) {
+      for (let col = 3; col <= utils.decode_col("EQ"); col++) {
         const valueIndex = utils.encode_cell({ c: col, r: fromRowCount });
         const scoreIndex = utils.encode_cell({ c: col, r: fromRowCount + 1 });
 
@@ -1422,7 +1431,7 @@ export default {
           case 21:
             obj[
               index
-            ].qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.withdrawalOfProsecutionRate =
+            ].qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.withdrawalOfProsecutionRateandacquittalrate =
               {
                 value: formatNumber(valueCell.v),
                 score: formatNumber(scoreCell.v),
@@ -1431,7 +1440,7 @@ export default {
           case 22:
             obj[
               index
-            ].qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.acquittalRate =
+            ].qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.withdrawalOfProsecutionRate =
               {
                 value: formatNumber(valueCell.v),
                 score: formatNumber(scoreCell.v),
@@ -1440,7 +1449,7 @@ export default {
           case 23:
             obj[
               index
-            ].qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.evaluation =
+            ].qualityAndEfficiency.withdrawalOfProsecutionAndAcquittalRate.AcquittalRate =
               {
                 value: formatNumber(valueCell.v),
                 score: formatNumber(scoreCell.v),
@@ -1628,7 +1637,7 @@ export default {
           case 44:
             obj[
               index
-            ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.criminalAppealRetrialProsecutionSuggestionAdoptRate =
+            ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.civilDisputesupervisorAdoptRate =
               {
                 value: formatNumber(valueCell.v),
                 score: formatNumber(scoreCell.v),
@@ -1637,7 +1646,7 @@ export default {
           case 45:
             obj[
               index
-            ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.evaluation =
+            ].qualityAndEfficiency.judicialCasesSupervisionAdoptRate.administrativesupervisorAdoptRate =
               {
                 value: formatNumber(valueCell.v),
                 score: formatNumber(scoreCell.v),
@@ -1671,7 +1680,7 @@ export default {
               };
             break;
           case 49:
-            obj[index].qualityAndEfficiency.filingSupervisionRate.evaluation = {
+            obj[index].qualityAndEfficiency.filingSupervisionRate.FillingsupervisionRate = {
               value: formatNumber(valueCell.v),
               score: formatNumber(scoreCell.v),
             };
@@ -1868,7 +1877,7 @@ export default {
           case 71:
             obj[
               index
-            ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.evaluation =
+            ].qualityAndEfficiency.nonJudicialCivilAdministrativeSupervisionOpinionAdoptRate.illegalExecutionSupervisionSuggestionAdoptRate =
               {
                 value: formatNumber(valueCell.v),
                 score: formatNumber(scoreCell.v),
@@ -2419,7 +2428,20 @@ export default {
             };
             break;
           case 144:
-            obj[index].qualityAndEfficiency.companyComplianceCaseRatio = {
+            obj[index].qualityAndEfficiency.specialMetrics = {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
+            break;
+            // 2024.2.4新增两列
+          case 145:
+            obj[index].qualityAndEfficiency.specialMetrics.comprehensivePerformanceRateknowledge = {
+              value: formatNumber(valueCell.v),
+              score: formatNumber(scoreCell.v),
+            };
+            break;
+          case 146:
+            obj[index].qualityAndEfficiency.specialMetrics.comprehensivePerformanceRatenot = {
               value: formatNumber(valueCell.v),
               score: formatNumber(scoreCell.v),
             };
